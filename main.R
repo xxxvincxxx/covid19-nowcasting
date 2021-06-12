@@ -34,7 +34,7 @@ df %>%
 
 ## -> basically replicate this: https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-07-31-en.pdf?__blob=publicationFile
 
-## symptom_start_date plot
+## symptom_start_date plot:
 
 df %>%
   filter(symptom_start_date >= '2020-06-01') %>%
@@ -47,6 +47,12 @@ df %>%
 ## In the new sample (aka 2020-06-01/2020-07-28), how many 
 ## unreported cases there are?
 
+df %>%
+  filter(reporting_date >= '2020-06-01') -> df_res
+df_res %>%
+  mutate(sym_reported = ifelse(is.na(symptom_start_date)==T,"no","yes")) %>%
+  tabyl(sym_reported) %>%
+  adorn_pct_formatting()
 
 
 
