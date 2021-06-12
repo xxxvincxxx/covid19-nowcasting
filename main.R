@@ -18,7 +18,8 @@ df %>%
   mutate(Symptom_Start_Date = as.Date(Symptom_Start_Date)) %>%
   # clean names to lower case 
   # calculate delay as the difference between reporting_date and symptom_start_date
-  mutate(delay = Reporting_Date - Symptom_Start_Date) -> df
+  mutate(delay = Reporting_Date - Symptom_Start_Date) %>%
+  clean_names() -> df
 
 
 #######
@@ -33,3 +34,18 @@ df %>%
 
 
 ## -> basically replicate this: https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-07-31-en.pdf?__blob=publicationFile
+
+## symptom_start_date plot
+df %>%
+  filter(symptom_start_date >= '2020-06-01') %>%
+  group_by(symptom_start_date) %>%
+  summarise(cases = sum(cases)) %>%
+  ggplot(aes(symptom_start_date, cases)) + geom_line() + stat_smooth(method = loess) +
+  # expand graph limits on the y axis
+  expand_limits(y = c(0, 1000))
+
+
+
+
+
+
