@@ -30,3 +30,6 @@ df %>%
 ##  You will see that the number of cases by Symtom_Start_Date drops at the end of July, 
 ##  because some cases get reported later and these late cases are not yet reported for
 ##  the last Symtom_Start_Dates.
+
+
+## -> basically replicate this: https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/2020-07-31-en.pdf?__blob=publicationFile
