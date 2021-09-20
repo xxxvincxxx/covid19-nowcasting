@@ -24,4 +24,9 @@ df %>%
 #######
 ## 1 ##
 #######
+
 ##  Distribution of cases over time
+##  Number of daily cases by Symtom_Start_Date for June and July 2020. 
+##  You will see that the number of cases by Symtom_Start_Date drops at the end of July, 
+##  because some cases get reported later and these late cases are not yet reported for
+##  the last Symtom_Start_Dates.
