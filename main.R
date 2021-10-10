@@ -1,5 +1,6 @@
 library(tidyverse)
 library(janitor)
+library(lubridate)
 
 ## load data from googledoc;
 ## the document comes from FKI covid19 data up to July 2020
@@ -10,6 +11,12 @@ df <- read.csv(sprintf("https://docs.google.com/uc?id=%s&export=download", id))
 
 ## replace empty values with NA 
 df[df==''] <- NA
+
+## convert dates format into cast date
+df %>%
+  mutate(Reporting_Date = as.Date(Reporting_Date)) %>%
+  mutate(Symptom_Start_Date = as.Date(Symptom_Start_Date)) -> df
+  
 
 ## check the data and use janitor to fix the names
 df %>%
