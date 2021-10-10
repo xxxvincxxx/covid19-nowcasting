@@ -15,11 +15,13 @@ df[df==''] <- NA
 ## convert dates format into cast date
 df %>%
   mutate(Reporting_Date = as.Date(Reporting_Date)) %>%
-  mutate(Symptom_Start_Date = as.Date(Symptom_Start_Date)) -> df
-  
+  mutate(Symptom_Start_Date = as.Date(Symptom_Start_Date)) %>%
+  # clean names to lower case 
+  # calculate delay as the difference between reporting_date and symptom_start_date
+  mutate(delay = Reporting_Date - Symptom_Start_Date) -> df
 
-## check the data and use janitor to fix the names
-df %>%
-  janitor::clean_names() %>%
-  mutate(delay = reporting_date - symptom_start_date)
 
+#######
+## 1 ##
+#######
+##  Distribution of cases over time
