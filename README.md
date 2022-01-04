@@ -1,3 +1,4 @@
 # covid19-nowcasting
 🔮 Clairvoyant Nowcasting Methods for under-reported Covid19 cases 🔮 
-Test
+
+Several Methods for Nowcasting Covid19 UnderReported Cases in R 
